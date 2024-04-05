@@ -17,7 +17,7 @@ class AdsComman {
     required String advertisementId,
     List<String>? testDeviceIds,
     int appOpenTimer = 40,
-    int interTimer = 40,
+    int interstitialAdsTime = 40,
   }) async {
     await AdsCommanPlatform.instance
         .changeAdvertisementId(advertisementId: advertisementId)
@@ -34,7 +34,7 @@ class AdsComman {
           box.write(ArgumentConstant.isAppOpenStartTime, 0);
         }
         appOpenShowTime = appOpenTimer;
-        interShowTime = interTimer;
+        interShowTime = interstitialAdsTime;
       }
     });
     return true;
@@ -66,7 +66,7 @@ class AdsComman {
         .showInterstitialAd(interstitialID: interstitialID);
   }
 
-  void getTimerInterAd({required String interstitialID}) {
+  void getDelayedInterAd({required String interstitialID}) {
     AdsCommanPlatform.instance
         .getDifferenceTime(interstitialID: interstitialID);
   }

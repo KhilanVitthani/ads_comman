@@ -29,10 +29,17 @@ class _MyAppState extends State<MyApp> {
 
   Future<void> initPlatformState() async {
     try {
-      var metadata = await _adsCommanPlugin.changeAdvertisementId(
-          advertisementId: "ca-app-pub-3940256099942544~3347511713",
-          testDeviceIds: ["91F62E7D958C626FF944ADD04A06CA0C"],
-          interTimer: 10);
+      var metadata = await _adsCommanPlugin
+          .changeAdvertisementId(
+        advertisementId: "ca-app-pub-3940256099942544~3347511713",
+        testDeviceIds: ["91F62E7D958C626FF944ADD04A06CA0C"],
+        interstitialAdsTime: 10,
+        appOpenTimer: 10,
+      )
+          .then((value) {
+        _adsCommanPlugin.loadInterstitialAd(
+            interstitialID: "ca-app-pub-3940256099942544/1033173712");
+      });
       print("Data: $metadata");
       if (metadata == true) {
         _adsCommanPlugin.loadInterstitialAd(
@@ -67,10 +74,17 @@ class _MyAppState extends State<MyApp> {
             ),
             ElevatedButton(
               onPressed: () {
-                _adsCommanPlugin.getTimerInterAd(
+                _adsCommanPlugin.showInterstitialAd(
                     interstitialID: "ca-app-pub-3940256099942544/1033173712");
               },
               child: const Text("Show Interstitial Ad"),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                _adsCommanPlugin.getDelayedInterAd(
+                    interstitialID: "ca-app-pub-3940256099942544/1033173712");
+              },
+              child: const Text("Show Interstitial Ad After Some Time"),
             ),
             ElevatedButton(
               onPressed: () {
