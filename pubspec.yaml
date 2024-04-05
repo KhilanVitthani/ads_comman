@@ -1,7 +1,8 @@
 name: ads_comman
-description: "A new Flutter plugin project."
+description: "A flutter plugin for google ads."
 version: 0.0.1
-homepage:
+author: Khilan Vitthani
+homepage: https://github.com/KhilanVitthani/ads_comman
 
 environment:
   sdk: '>=3.3.2 <4.0.0'
