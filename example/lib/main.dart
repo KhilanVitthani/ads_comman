@@ -82,7 +82,11 @@ class _MyAppState extends State<MyApp> {
             ElevatedButton(
               onPressed: () {
                 _adsCommanPlugin.getDelayedInterAd(
-                    interstitialID: "ca-app-pub-3940256099942544/1033173712");
+                  interstitialID: "ca-app-pub-3940256099942544/1033173712",
+                  onAdClosed: () {
+                    print("Ad Closed");
+                  },
+                );
               },
               child: const Text("Show Interstitial Ad After Some Time"),
             ),

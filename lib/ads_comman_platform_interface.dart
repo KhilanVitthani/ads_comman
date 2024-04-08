@@ -35,14 +35,17 @@ abstract class AdsCommanPlatform extends PlatformInterface {
     throw UnimplementedError('platformVersion() has not been implemented.');
   }
 
-  void showInterstitialAd({required String interstitialID}) {
+  void showInterstitialAd(
+      {required String interstitialID, VoidCallback? onAdClosed}) {
     throw UnimplementedError('platformVersion() has not been implemented.');
   }
 
   void loadInterstitialAd({required String interstitialID}) {
     throw UnimplementedError('platformVersion() has not been implemented.');
   }
-  void getDifferenceTime({required String interstitialID}) {
+
+  void getDifferenceTime(
+      {required String interstitialID, VoidCallback? onAdClosed}) {
     throw UnimplementedError('platformVersion() has not been implemented.');
   }
 }

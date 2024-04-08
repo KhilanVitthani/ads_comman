@@ -61,14 +61,18 @@ class AdsComman {
     }
   }
 
-  void showInterstitialAd({required String interstitialID}) {
-    AdsCommanPlatform.instance
-        .showInterstitialAd(interstitialID: interstitialID);
+  void showInterstitialAd(
+      {required String interstitialID, VoidCallback? onAdClosed}) {
+    AdsCommanPlatform.instance.showInterstitialAd(
+        interstitialID: interstitialID, onAdClosed: onAdClosed);
   }
 
-  void getDelayedInterAd({required String interstitialID}) {
-    AdsCommanPlatform.instance
-        .getDifferenceTime(interstitialID: interstitialID);
+  void getDelayedInterAd(
+      {required String interstitialID, VoidCallback? onAdClosed}) {
+    AdsCommanPlatform.instance.getDifferenceTime(
+      interstitialID: interstitialID,
+      onAdClosed: onAdClosed,
+    );
   }
 
   void loadInterstitialAd({required String interstitialID}) {

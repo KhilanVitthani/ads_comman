@@ -76,7 +76,8 @@ class MethodChannelAdsComman extends AdsCommanPlatform {
           );
   }
 
-  showInterstitialAd({required String interstitialID}) {
+  showInterstitialAd(
+      {required String interstitialID, VoidCallback? onAdClosed}) {
     loadInterstitialAd(interstitialID: interstitialID);
     interstitialAdRunning = true;
     if (interstitialAdRunning) {
@@ -88,11 +89,17 @@ class MethodChannelAdsComman extends AdsCommanPlatform {
           loadInterstitialAd(interstitialID: interstitialID);
           interstitialAdRunning = false;
           print('Ad dismissed fullscreen content.');
+          if (onAdClosed != null) {
+            onAdClosed();
+          }
           box.write(ArgumentConstant.isStartTime,
               DateTime.now().millisecondsSinceEpoch.toString());
         },
         onAdFailedToShowFullScreenContent: (ad, error) {
           interstitialAdRunning = false;
+          if (onAdClosed != null) {
+            onAdClosed();
+          }
           print('Ad failed to show fullscreen content: $error');
         },
       );
@@ -122,7 +129,8 @@ class MethodChannelAdsComman extends AdsCommanPlatform {
     );
   }
 
-  getDifferenceTime({required String interstitialID}) {
+  getDifferenceTime(
+      {required String interstitialID, VoidCallback? onAdClosed}) {
     if (box.read(ArgumentConstant.isStartTime) != null) {
       String startTime = box.read(ArgumentConstant.isStartTime).toString();
       String currentTime = DateTime.now().millisecondsSinceEpoch.toString();
@@ -132,7 +140,8 @@ class MethodChannelAdsComman extends AdsCommanPlatform {
       print("currentDate := $currentTime");
       int differenceTime = difference ~/ 1000;
       if (differenceTime > interShowTime) {
-        showInterstitialAd(interstitialID: interstitialID);
+        showInterstitialAd(
+            interstitialID: interstitialID, onAdClosed: onAdClosed);
       }
     }
   }
