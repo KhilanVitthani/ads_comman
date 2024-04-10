@@ -142,6 +142,10 @@ class MethodChannelAdsComman extends AdsCommanPlatform {
       if (differenceTime > interShowTime) {
         showInterstitialAd(
             interstitialID: interstitialID, onAdClosed: onAdClosed);
+      } else {
+        if (onAdClosed != null) {
+          onAdClosed();
+        }
       }
     }
   }

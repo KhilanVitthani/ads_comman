@@ -31,6 +31,7 @@ class AdsComman {
           box.write(ArgumentConstant.isStartTime, 0);
         }
         if (isNullEmptyOrFalse(box.read(ArgumentConstant.isAppOpenStartTime))) {
+          ;
           box.write(ArgumentConstant.isAppOpenStartTime, 0);
         }
         appOpenShowTime = appOpenTimer;

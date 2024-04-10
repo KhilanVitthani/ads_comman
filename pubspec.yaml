@@ -1,11 +1,11 @@
 name: ads_comman
 description: "A flutter plugin for google ads in android."
-version: 0.0.4
+version: 0.0.6
 author: Khilan Vitthani
 homepage: https://github.com/KhilanVitthani/ads_comman
 
 environment:
-  sdk: '>=3.3.2 <4.0.0'
+  sdk: '>=3.0.0 <4.0.0'
   flutter: '>=3.3.0'
 
 dependencies:
